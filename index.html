@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-AU" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070c14">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Project 269 Control Centre</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+  <script>
+    // set the theme before anything paints, to avoid a flash
+    (function () { var p = "system"; try { p = localStorage.getItem("p269-theme") || "system"; } catch (e) {}
+      if (p === "system") p = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.dataset.theme = p; })();
+  </script>
+</head>
+<body>
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="boot" aria-hidden="true">
+    <svg class="boot-mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="#3ee0ff" stroke-width="3" stroke-dasharray="8 6" opacity=".8"/><circle cx="50" cy="6" r="4" fill="#ffb547"/></svg>
+  </div>
+  <div id="app"></div>
+  <noscript>This site needs JavaScript switched on.</noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
