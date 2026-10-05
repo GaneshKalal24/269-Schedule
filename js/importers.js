@@ -72,6 +72,9 @@ export function parsePdfPages(pages) {
     const dates = [...rs.matchAll(/(\d{1,2})\/(\d{2})\/(\d{2})/g)];
     const pcts = [...rs.matchAll(/(\d{1,3}\.\d{2})%/g)].map(m => +m[1]);
     const dur = rs.match(DUR_RE);
+    // MSP prints "Complete" in place of the % columns once a task is finished
+    const complete = /(^|\s)Complete(\s|$)/.test(rs);
+    if (complete && !pcts.length) pcts.push(100, 100);
     const summary = pcts.length === 0;
     return {
       id: r.id, name, level: Math.max(0, Math.round(r.x / 7)), summary,

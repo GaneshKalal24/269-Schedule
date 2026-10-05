@@ -123,7 +123,7 @@ export function buildModel(rawTasks, trackingMap) {
   tasks.filter(t => !byId.get(t.parent)).forEach(below);
   // roll up status, bottom up
   const roll = t => {
-    let worst = t.tr.status || "";
+    let worst = t.tr.status || (t.isLeaf && t.actual === 100 ? "done" : ""); // 100% in MSP counts as complete unless you set a status
     let allDone = t.children.length > 0;
     for (const c of t.children) {
       const r = roll(c);
